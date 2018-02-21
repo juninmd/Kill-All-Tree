@@ -1,13 +1,18 @@
-# Kill-All-Tree
+# Hakai
+
+![Bills dando Hakai em Zamasu](https://i.ytimg.com/vi/ER0JXV-nLoc/maxresdefault.jpg)
 
 Solução para apagar arquivos que excedem o caminho máximo de origem do windows.
-Normalmente quando estamos utilizando node.js as pastinhas no 'node_modules' acabam tendo um path muito grande, e caso escolhemos por apagar a pasta o sistema não deixa, por isso desenvolvi esse código que resolverá esse problema.
+Normalmente quando estamos utilizando node.js em versões antigas as pastinhas no 'node_modules' acabam tendo um path muito grande e caso escolhemos por apagar a pasta o sistema não deixa, por isso desenvolvi esse código que resolverá esse problema.
 
 ![alt tag](http://i.imgur.com/IZ2zLHc.jpg)
 
-==
-# Utilização:
-Altere o valor da variável 'pathToKill' para a localização da pasta que deseja apagar. 
-![alt tag](http://i.imgur.com/xZKvivm.jpg)
+# Instalação:
+```
+    $ yarn global add hakai
+```
 
-E simplesmente através de um 'cmd' (não esqueça de ter o Node JS instalado) rode o comando node app.js
+# Utilização:
+```
+    $ hakai "D:\Minha Pasta"
+```

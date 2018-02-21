@@ -1,36 +1,50 @@
-var fs = require('fs');
+#!/usr/bin/env node
+const fs = require('fs');
 
+if (process.argv.length == 2) {
+    console.log('[HAKAI] Utilize `$ hakai "<caminho>"` (Não se esqueça das aspas)')
+    return;
+}
 
-var pathToKill = "E:/a/";
-var mum = 0;
-rmDir = function (dirPath) {
+let pathToKill = process.argv[2];
+let mum = 0;
+hakai = function (dirPath) {
     try {
+        if (!fs.existsSync(dirPath)) {
+            console.log('[HAKAI] O caminho ' + dirPath + ' não existe.')
+            return;
+        }
         mum = mum + 1;
-        var files = fs.readdirSync(dirPath);
+        const files = fs.readdirSync(dirPath);
         if (files.length > 0)
-            for (var i = 0; i < files.length; i++) {
+
+            for (let i = 0; i < files.length; i++) {
                 var filePath = dirPath + '/' + files[i];
 
                 if (fs.statSync(filePath).isFile())
                     fs.unlinkSync(filePath);
                 else {
                     fs.renameSync(filePath, pathToKill + mum);
-                    console.log("Limpo");
                     filePath = pathToKill + mum;
-                    rmDir(filePath);
+                    hakai(filePath);
                 }
 
             }
+
         fs.rmdirSync(dirPath);
     }
     catch (e) {
+        console.error(e.message);
+
         try {
-            rmDir(filePath);
+            hakai(filePath);
         }
         catch (ex) {
+            console.error(ex.message);
         }
-
     }
 };
 
-rmDir(pathToKill);
+
+console.log("[HAKAI] Iniciando exclusão de todos os arquivos do caminho: " + pathToKill);
+hakai(pathToKill);

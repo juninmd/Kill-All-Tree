@@ -1,0 +1,14 @@
+{
+  "dependencies": {},
+  "name": "hakai",
+  "version": "1.0.0",
+  "description": "Hakai, utilitário para apagar aqueles diretórios chatos.",
+  "main": "app.js",
+  "repository": "https://github.com/juninmd/hakai.git",
+  "author": "Antonio Carlos <jr_acn@yahoo.com.br>",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "hakai": "app.js"
+  }
+}
